@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#"
+                        <a href="{{ route('admin.categories.index') }}"
                            class="nav-link text-white {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
                             <i class="fa-solid fa-folder me-2"></i>Danh mục
                         </a>

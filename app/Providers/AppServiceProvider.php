@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useTailwind();
+        Paginator::useBootstrapFive();
 
         View::composer('partials.navbar', static function (ViewInstance $view): void {
             $view->with('categories', Cache::remember(

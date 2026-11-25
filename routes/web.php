@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -25,13 +27,12 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::get('/admin', [AdminController::class, 'dashboard'])
-    ->middleware('auth')
-    ->name('admin.dashboard');
-
 Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::resource('categories', AdminCategoryController::class)->except(['show']);
+        Route::post('posts/fetch-rss', [AdminPostController::class, 'fetchRss'])->name('posts.fetch-rss');
+        Route::resource('posts', AdminPostController::class)->except(['show']);
     });
