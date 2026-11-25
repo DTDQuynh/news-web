@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+@import './components/navbar.css';
+@import './pages/home.css';
+@import './pages/article.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: Arial, 'Segoe UI', Tahoma, ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Times New Roman', Georgia, serif;
+}
+
+:root {
+    --brand-green-700: #286b4f;
+    --brand-green-900: #173d2e;
+}
+
+.dark {
+    color-scheme: dark;
+    --color-white: #0f172a;
+    --color-gray-200: #334155;
+    --color-gray-300: #475569;
+    --color-gray-600: #cbd5e1;
+    --color-gray-900: #f8fafc;
+    --color-slate-50: #0b1220;
+    --color-slate-100: #111827;
+    --color-slate-200: #334155;
+    --color-slate-300: #475569;
+    --color-slate-400: #64748b;
+    --color-slate-500: #94a3b8;
+    --color-slate-600: #cbd5e1;
+    --color-slate-700: #e2e8f0;
+    --color-slate-800: #f1f5f9;
+    --color-slate-900: #f8fafc;
+    --color-green-50: #052e16;
+    --color-green-200: #166534;
+    --color-green-800: #bbf7d0;
+    --color-rose-50: #4c0519;
+    --color-rose-200: #9f1239;
+    --color-rose-700: #fecdd3;
+    --color-amber-50: #451a03;
+    --color-amber-200: #92400e;
+    --color-amber-800: #fde68a;
+    --color-blue-50: #172554;
+    --color-blue-200: #1d4ed8;
+    --color-blue-800: #bfdbfe;
+    --brand-green-700: #4ade80;
+    --brand-green-900: #14532d;
+}
+
+body {
+    background-color: var(--color-white);
+}
+
+.dark .news-home__placeholder {
+    background: linear-gradient(135deg, #334155, #1e293b 58%, #14532d);
+}
+
+.dark .navbar-search__submit,
+.dark .login-panel__submit {
+    background-color: #286b4f;
+}
+
+.dark .navbar-search__submit:hover,
+.dark .login-panel__submit:hover {
+    background-color: #173d2e;
+}
