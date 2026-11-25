@@ -51,4 +51,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, 'saved_posts')->withTimestamps();
 
     }
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
 }
