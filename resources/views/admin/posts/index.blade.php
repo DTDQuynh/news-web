@@ -13,7 +13,7 @@
               onsubmit="const btn = this.querySelector('button'); btn.disabled = true; btn.innerHTML = '<i class=\'fa-solid fa-spinner fa-spin me-1\'></i> Đang cập nhật...';">
             @csrf
             <button type="submit" class="btn btn-outline-primary btn-sm">
-                <i class="fa-solid fa-rss me-1"></i> Cập nhật nguồn cấp tin tức tự động
+                <i class="fa-solid fa-rss me-1"></i> Cập nhật tin tức tự động
             </button>
         </form>
         <a href="{{ route('admin.posts.create') }}" class="btn btn-primary btn-sm">

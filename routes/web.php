@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/bai-viet/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/categories/{slug}', [HomeController::class, 'category'])->name('categories.show');
-Route::get('/search', fn () => abort(501, 'Search is not implemented yet.'))->name('search');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::middleware('guest')->group(function () {
     Route::view('/login', 'auth.login')->name('login');

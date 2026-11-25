@@ -7,6 +7,7 @@
     <title>@yield('title', 'Quản trị') - {{ config('app.name', 'News') }}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    @stack('styles')
 </head>
 <body class="bg-light">
     <div class="container-fluid">
@@ -30,7 +31,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#"
+                        <a href="{{ route('admin.posts.index') }}"
                            class="nav-link text-white {{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">
                             <i class="fa-solid fa-file-lines me-2"></i>Bài viết
                         </a>
@@ -82,5 +83,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @stack('scripts')
 </body>
 </html>
