@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Post;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    public function dashboard(Request $request)
+    public function dashboard(): View
     {
-        abort_unless($request->user()->role === 'admin', 403);
-
-        abort(501, 'The admin page is not implemented yet.');
+        return view('admin.dashboard', [
+            'totalPosts' => Post::count(),
+            'totalCategories' => Category::count(),
+            'totalComments' => Comment::count(),
+            'totalViews' => (int) Post::sum('views_count'),
+        ]);
     }
 }

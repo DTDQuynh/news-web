@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -9,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/bai-viet/{post:slug}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/categories/{slug}', [HomeController::class, 'category'])->name('categories.show');
-Route::get('/search', fn () => abort(501, 'Search is not implemented yet.'))->name('search');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::middleware('guest')->group(function () {
     Route::view('/login', 'auth.login')->name('login');
@@ -25,6 +27,12 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-Route::get('/admin', [AdminController::class, 'dashboard'])
-    ->middleware('auth')
-    ->name('admin.dashboard');
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::resource('categories', AdminCategoryController::class)->except(['show']);
+        Route::post('posts/fetch-rss', [AdminPostController::class, 'fetchRss'])->name('posts.fetch-rss');
+        Route::resource('posts', AdminPostController::class)->except(['show']);
+    });
