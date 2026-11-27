@@ -53,6 +53,12 @@ body {
     background-color: var(--color-white);
 }
 
+.offline-status {
+    border-color: var(--brand-green-700);
+    background-color: var(--brand-green-900);
+    color: #fff;
+}
+
 .dark .news-home__placeholder {
     background: linear-gradient(135deg, #334155, #1e293b 58%, #14532d);
 }
