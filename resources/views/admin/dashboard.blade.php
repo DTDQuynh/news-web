@@ -24,12 +24,12 @@
     </div>
 
     <div class="col-sm-6 col-xl-3">
-        <div class="card border-0 shadow-sm h-100">
+        <a href="{{ route('admin.comments.index') }}" class="card border-0 shadow-sm h-100 text-decoration-none text-reset">
             <div class="card-body">
                 <div class="text-muted small text-uppercase fw-semibold mb-1">Tổng bình luận</div>
                 <div class="fs-3 fw-bold">{{ number_format($totalComments, 0, ',', '.') }}</div>
             </div>
-        </div>
+        </a>
     </div>
 
     <div class="col-sm-6 col-xl-3">
