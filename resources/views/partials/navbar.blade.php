@@ -51,37 +51,58 @@
                 >
             </button>
 
-            @auth
-                <span class="navbar-account">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="8" r="3.5"></circle>
-                        <path d="M5 20c0-3.4 3.1-6 7-6s7 2.6 7 6"></path>
-                    </svg>
-                    <span>Xin chào {{ auth()->user()->name }}</span>
-                </span>
+            <div class="navbar-account-group">
+                @auth
+                    <span class="navbar-account">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="8" r="3.5"></circle>
+                            <path d="M5 20c0-3.4 3.1-6 7-6s7 2.6 7 6"></path>
+                        </svg>
+                        <span>Xin chào {{ auth()->user()->name }}</span>
+                    </span>
 
-                @if (auth()->user()->role === 'admin')
-                    <a href="{{ route('admin.dashboard') }}" class="navbar-admin-link">Quản trị</a>
-                @endif
+                    <a
+                        href="{{ route('profile.saved') }}"
+                        class="navbar-profile-icon"
+                        data-tooltip="Bài viết đã lưu"
+                        aria-label="Bài viết đã lưu"
+                    >
+                        <img src="{{ asset('images/bookmark-icon.png') }}" alt="" aria-hidden="true">
+                        <span class="sr-only">Bài viết đã lưu</span>
+                    </a>
+                    <a
+                        href="{{ route('profile.history') }}"
+                        class="navbar-profile-icon"
+                        data-tooltip="Lịch sử đã đọc"
+                        aria-label="Lịch sử đã đọc"
+                    >
+                        <img src="{{ asset('images/history-icon.png') }}" alt="" aria-hidden="true">
+                        <span class="sr-only">Lịch sử đã đọc</span>
+                    </a>
 
-                <form action="{{ route('logout') }}" method="POST" class="navbar-logout">
-                    @csrf
-                    <button type="submit" class="navbar-logout__button">Đăng xuất</button>
-                </form>
-            @else
-                <a
-                    href="{{ route('login') }}"
-                    class="navbar-account"
-                    data-login-modal-open
-                    aria-haspopup="dialog"
-                >
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="8" r="3.5"></circle>
-                        <path d="M5 20c0-3.4 3.1-6 7-6s7 2.6 7 6"></path>
-                    </svg>
-                    <span>Đăng nhập</span>
-                </a>
-            @endauth
+                    @if (auth()->user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="navbar-admin-link">Quản trị</a>
+                    @endif
+
+                    <form action="{{ route('logout') }}" method="POST" class="navbar-logout">
+                        @csrf
+                        <button type="submit" class="navbar-logout__button">Đăng xuất</button>
+                    </form>
+                @else
+                    <a
+                        href="{{ route('login') }}"
+                        class="navbar-account"
+                        data-login-modal-open
+                        aria-haspopup="dialog"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="8" r="3.5"></circle>
+                            <path d="M5 20c0-3.4 3.1-6 7-6s7 2.6 7 6"></path>
+                        </svg>
+                        <span>Đăng nhập</span>
+                    </a>
+                @endauth
+            </div>
 
         </div>
     </nav>
