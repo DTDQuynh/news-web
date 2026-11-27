@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#"
+                        <a href="{{ route('admin.comments.index') }}"
                            class="nav-link text-white {{ request()->routeIs('admin.comments.*') ? 'active' : '' }}">
                             <i class="fa-solid fa-comments me-2"></i>Bình luận
                         </a>
