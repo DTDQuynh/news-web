@@ -82,7 +82,7 @@
     }
 
     .navbar-brand {
-        color: var(--color-slate-900);
+        color: var(--brand-green-700);
         text-decoration: none;
         transition: color 150ms ease;
     }
@@ -120,6 +120,14 @@
         font-size: 0.875rem;
         text-decoration: none;
         white-space: nowrap;
+    }
+
+    .navbar-account-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 0.5rem;
     }
 
     .navbar-account:hover {
@@ -218,6 +226,59 @@
         color: var(--brand-green-700);
     }
 
+    .navbar-profile-icon {
+        position: relative;
+        display: inline-flex;
+        width: 2rem;
+        height: 2rem;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-slate-700);
+        text-decoration: none;
+    }
+
+    .navbar-profile-icon img {
+        width: 1.375rem;
+        height: 1.375rem;
+        object-fit: contain;
+    }
+
+    .dark .navbar-profile-icon img {
+        filter: invert(1);
+    }
+
+    .navbar-profile-icon:hover {
+        color: var(--brand-green-700);
+    }
+
+    .navbar-profile-icon::after {
+        position: absolute;
+        z-index: 20;
+        top: calc(100% + 0.375rem);
+        left: 50%;
+        border-radius: 0.25rem;
+        padding: 0.375rem 0.625rem;
+        background: #0f172a;
+        color: white;
+        content: attr(data-tooltip);
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -0.25rem);
+        transition: opacity 120ms ease, transform 120ms ease;
+        visibility: hidden;
+    }
+
+    .navbar-profile-icon:hover::after,
+    .navbar-profile-icon:focus-visible::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+        visibility: visible;
+    }
+
     .navbar-logout {
         display: inline-flex;
     }
@@ -237,9 +298,67 @@
     .navbar-search__input:focus-visible,
     .navbar-search__submit:focus-visible,
     .navbar-admin-link:focus-visible,
+    .navbar-profile-icon:focus-visible,
     .navbar-logout__button:focus-visible {
         outline: 2px solid var(--brand-green-700);
         outline-offset: 3px;
+    }
+
+    .bookmark-action {
+        display: inline-flex;
+        margin-top: 0.5rem;
+        color: var(--brand-green-700);
+        font-size: 0.875rem;
+        text-decoration: none;
+    }
+
+    .bookmark-action button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid var(--color-slate-300);
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.875rem;
+        background: var(--color-white);
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    .bookmark-action button[aria-pressed="true"] {
+        border-color: var(--brand-green-700);
+        background: var(--brand-green-700);
+        color: white;
+    }
+
+    a.bookmark-action {
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid var(--color-slate-300);
+        border-radius: 0.25rem;
+        padding: 0.5rem 0.875rem;
+        background: var(--color-white);
+    }
+
+    .bookmark-action svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+    }
+
+    .bookmark-action:hover {
+        color: var(--brand-green-900);
+    }
+
+    .bookmark-action:focus-visible,
+    .bookmark-action button:focus-visible {
+        outline: 2px solid var(--brand-green-700);
+        outline-offset: 2px;
     }
 }
 
